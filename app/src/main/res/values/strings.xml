@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">StartAndShutdown</string>
+    <string name="pc_label">Computer</string>
+    <string name="ip_default">192.168.1.1</string>
+    <string name="woladvice">Для работы функции требуется активировать режим WOL в BIOS.</string>
+    <string name="shutdownadvice">Для работы функции требуется настройка операционной системы. Скрипт для настройки можно скачать по ссылке в описании программы в Play Store.</string>
+    <string name="donate">Вы можете поддержать автора программы отправив пожертвование. Подробная информация в описании приложения в Play Store.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="settings_saved">Настройки сохранены</string>
+    <string name="settings_updated">Настройки обновлены</string>
+    <string name="CustomCommandHint">Custom command:</string>
+    <string name="EntryNotFound">Настройки виджета не найдены в базе данных. Требуется перенастройка.</string>
+    <string name="configuration">Configuration:</string>
+    <string name="ip_address">IP-Address</string>
+    <string name="ip_example">Example: 192.168.1.2</string>
+    <string name="mac_address">MAC-Address:</string>
+    <string name="mac_example">Example: 1C:6F:65:AA:C8:1D</string>
+    <string name="admin_username">Admin-Username:</string>
+    <string name="admin">your Windows admin username</string>
+    <string name="password">Password:</string>
+    <string name="pass_hint">your Windows admin pass</string>
+    <string name="domain">Domain</string>
+    <string name="domain_hint">optional - leave empty if you are not sure</string>
+    <string name="save_config">save config</string>
+    <string name="reference">Note: This app uses the free j-interop (http://j-interop.org) and wakeonlan (http://www.moldaner.de/wakeonlan/) APIs.</string>
+</resources>

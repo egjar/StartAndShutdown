@@ -1,0 +1,74 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "home.egjar.startandshutdown"
+        minSdkVersion 26
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            multiDexKeepFile file('multidex-config.txt')
+            minifyEnabled true
+            useProguard false
+        }
+        release {
+            multiDexKeepFile file('multidex-config.txt')
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+configurations {
+    internalize {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            if (details.requested.group == 'org.apache.httpcomponents' && details.requested.name == 'httpasyncclient' && details.requested.version == '4.1.2') {
+                details.useVersion '4.1.4'
+                details.because 'fixes critical bug in 4.1.2'
+            }
+            if (details.requested.group == 'org.apache.cxf' && details.requested.version == '3.2.8') {
+                details.useVersion '3.2.10'
+                details.because 'fixes critical bug in 3.2.8'
+            }
+        }
+    } // just define a separate configuration
+}
+
+/* a task to create the relocated libs, must be defined before used below in dependencies */
+task internalizeJar(type: ShadowJar) {
+//    doFirst {
+//        def files = project.configurations.internalize.files
+//        if (files) {
+//            def value = manifest.attributes.get('Class-Path')
+//            if ("lib/${it.name}" != null) {
+//                manifest.attributes 'Class-Path': [value, files.collect { "lib/${it.name}" }.join(' ')].join(' ')
+//            }
+//        }
+//    }
+    classifier = 'intern' // this is not needed but prevents conflicts with other artifacts you may want to create
+    def pkg = 'org.apache.httpcomponents' // lib to relocate
+    def shadowPrefix = 'home.egjar.startupandshutdown'
+    relocate pkg, [shadowPrefix, pkg].join('.') // we want to relocate the above package
+    configurations = [project.configurations.internalize]
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    internalize group: 'io.cloudsoft.windows', name: 'winrm4j', version: '0.7.0'
+    implementation tasks.internalizeJar.outputs.files
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'org.jetbrains:annotations-java5:15.0'
+}

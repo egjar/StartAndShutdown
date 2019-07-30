@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtHeader" type="id" />
+    <item name="txtPC" type="id"/>
+    <item name="btnStart" type="id"/>
+    <item name="btnHibernate" type="id"/>
+    <item name="btnShutdown" type="id"/>
+    <item name="TableLayout01" type="id"/>
+    <item name="scrollView1" type="id"/>
+    <item name="tableRow7" type="id"/>
+    <item name="textView6" type="id"/>
+    <item name="textView8" type="id"/>
+    <item name="textView9" type="id"/>
+    <item name="textView11" type="id"/>
+    <item name="textView10" type="id"/>
+    <item name="tableRow1" type="id"/>
+    <item name="textView5" type="id"/>
+    <item name="txtIP" type="id"/>
+    <item name="tableRow2" type="id"/>
+    <item name="textView1" type="id"/>
+    <item name="txtMAC" type="id"/>
+    <item name="tableRow5" type="id"/>
+    <item name="textView2" type="id"/>
+    <item name="txtUsername" type="id"/>
+    <item name="tableRow3" type="id"/>
+    <item name="textView3" type="id"/>
+    <item name="txtPassword" type="id"/>
+    <item name="tableRow4" type="id"/>
+    <item name="textView4" type="id"/>
+    <item name="txtDomain" type="id"/>
+    <item name="tableRow6" type="id"/>
+    <item name="configSaveButton" type="id"/>
+</resources>
