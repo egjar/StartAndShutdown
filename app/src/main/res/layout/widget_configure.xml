@@ -91,7 +91,8 @@
                         android:hint="@string/ip_example"
                         android:ems="10"
                         android:width="200dp"
-                        android:digits="1234567890."/>
+                    android:digits="1234567890."
+                    android:autofillHints="true" />
             </TableRow>
 
             <TableRow
@@ -114,7 +115,8 @@
                         android:hint="@string/mac_example"
                         android:ems="10"
                         android:width="200dp"
-                        android:inputType="textCapCharacters">
+                    android:inputType="textCapCharacters"
+                    android:autofillHints="true">
 
                     <requestFocus/>
                 </EditText>
@@ -139,7 +141,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/admin"
                         android:ems="10"
-                        android:width="200dp"/>
+                    android:width="200dp"
+                    android:autofillHints="true" />
             </TableRow>
 
             <TableRow
@@ -162,7 +165,8 @@
                         android:hint="@string/pass_hint"
                         android:ems="10"
                         android:width="200dp"
-                        android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:autofillHints="true" />
             </TableRow>
 
             <TableRow
@@ -184,7 +188,8 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/domain_hint"
                         android:ems="10"
-                        android:width="200dp"/>
+                    android:width="200dp"
+                    android:autofillHints="true" />
             </TableRow>
 
             <TableRow

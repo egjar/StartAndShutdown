@@ -1,0 +1,1 @@
+-keep class org.apache.cxf.common.util.StringUtils

@@ -6,7 +6,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "home.egjar.startandshutdown"
         minSdkVersion 26
@@ -18,13 +18,15 @@ android {
     buildTypes {
         debug {
             multiDexKeepFile file('multidex-config.txt')
-            minifyEnabled true
-            useProguard false
+            minifyEnabled false
         }
         release {
-            multiDexKeepFile file('multidex-config.txt')
             minifyEnabled true
+            multiDexKeepProguard file('multidex-config.pro')
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        lintOptions {
+            abortOnError false
         }
     }
 }
@@ -58,8 +60,11 @@ task internalizeJar(type: ShadowJar) {
     classifier = 'intern' // this is not needed but prevents conflicts with other artifacts you may want to create
     def pkg = 'org.apache.httpcomponents' // lib to relocate
     def shadowPrefix = 'home.egjar.startupandshutdown'
-    relocate pkg, [shadowPrefix, pkg].join('.') // we want to relocate the above package
     configurations = [project.configurations.internalize]
+    doFirst {
+        manifest.attributes 'Class-Path': '.'
+        relocate pkg, [shadowPrefix, pkg].join('.') // we want to relocate the above package
+    }
 }
 
 dependencies {
